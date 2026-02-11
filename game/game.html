@@ -3,31 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <title>Tea Garden Guardian</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+  </style>
 </head>
 
 <body>
+
   <h1>Tea Garden Guardian</h1>
   <p>IAT 167 Final Game – Playable Version</p>
 
-  <!-- p5 canvas 会自动插到这里 -->
+  <!-- p5 画布会插入到这里 -->
   <div id="game-container"></div>
 
   <p>
     Controls: W / A / S / D to move, SPACE to shoot
   </p>
 
-  <a href="projects.html">← Back to Projects</a>
+  <p>
+    <a href="../projects.html">← Back to Projects</a>
+  </p>
 
   <!-- p5 core -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js"></script>
 
-  <!-- game classes -->
+  <!-- base classes -->
   <script src="Character.js"></script>
   <script src="TeaWave.js"></script>
+
+  <!-- powerups -->
+  <script src="PowerUp.js"></script>
+  <script src="GoldenLeaf.js"></script>
+  <script src="HealthPotion.js"></script>
+  <script src="ShieldToken.js"></script>
+
+  <!-- characters -->
   <script src="TeaSpirit.js"></script>
   <script src="Mosquito.js"></script>
+  <script src="BeetleTank.js"></script>
+  <script src="WaspShooter.js"></script>
+  <script src="DragonflyBoss.js"></script>
+  <script src="AromaParticle.js"></script>
 
   <!-- main sketch -->
   <script src="sketch.js"></script>
+
 </body>
 </html>
