@@ -75,7 +75,15 @@ function preload() {
 // ======================================================
 function setup() {
   const canvas = createCanvas(1200, 800);
-  canvas.parent("game-container"); // 插入到 HTML div
+  canvas.parent("game-container");
+
+  // ✅ 让 canvas 可以吃到键盘
+  canvas.elt.tabIndex = 0;
+  canvas.elt.focus();
+
+  // ✅ 点一下画布也能重新获得焦点（防止点到页面别处后失效）
+  canvas.mousePressed(() => canvas.elt.focus());
+
   smooth();
   textFont("Arial");
   textSize(16);
@@ -83,6 +91,7 @@ function setup() {
   resetGame();
   gameState = STATE_MENU;
 }
+
 
 
 function resetGame() {
@@ -485,6 +494,12 @@ function dropItems(x, y) {
 // Keyboard input handling (p5.js uses keyPressed/keyReleased)
 // ======================================================
 function keyPressed() {
+  // ✅ Stop Space from scrolling the page, but still allow shooting
+  if (key === ' ') {
+    player.shoot();
+    return false;
+  }
+
   // menu input handling
   if (gameState === STATE_MENU) {
     if (key === '1') {
@@ -532,15 +547,13 @@ function keyPressed() {
   if (key === 'a' || key === 'A') leftPressed = true;
   if (key === 'd' || key === 'D') rightPressed = true;
 
-  // shoot
-  if (key === ' ') player.shoot();
-
   // toggle global god mode
   if (key === 'g' || key === 'G') {
     godMode = !godMode;
     console.log("God Mode = " + godMode);
   }
 }
+
 
 function keyReleased() {
   if (key === 'w' || key === 'W') upPressed = false;
