@@ -74,7 +74,8 @@ function preload() {
 // setup + game reset
 // ======================================================
 function setup() {
-  createCanvas(1200, 800);
+  const canvas = createCanvas(1200, 800);
+  canvas.parent("game-container"); // 插入到 HTML div
   smooth();
   textFont("Arial");
   textSize(16);
@@ -82,6 +83,7 @@ function setup() {
   resetGame();
   gameState = STATE_MENU;
 }
+
 
 function resetGame() {
   // TeaSpirit class must exist in JS
